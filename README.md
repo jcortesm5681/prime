@@ -205,7 +205,7 @@ Watch the Request/Response Message Examples on _**Step By Step - Create a Train
 
 |STEP|API CALL|REQUEST|RESPONSE|
 |----|--------|------|---------|
-|1. Get the Train Id associated to a ShortTrainId|1|https://devint.pds.dev.use.torq.dev/train-management/train-id/short-id/A98765%2011|{"status":404,"errorCode":"ERR_0033","errorMessage":"Invalid short train id"}|
+|1. Get the Train Id associated to a ShortTrainId|1|https://devint.pds.dev.use.torq.dev/train-management/train-id/short-id/A98765%2011|{"status": 404,"errorCode": "ERR_0033","errorMessage": "Invalid short train id"}|
 |2. Create a TrainId for a ShortTrainId|4|https://devint.pds.dev.use.torq.dev/train-management/train-id<br><br>{"scac":"CN","section":"5","trainSymbol":"A9876","originDate":"2022-04-14","trainSymbolWithSection":"A98765"} |3489|
 |3. Validate the station name based on station number|5|https://devint.pds.dev.use.torq.dev/topology-lookup/station/station-name-or-station-number/58H|[GETStationName_Response.json](/json/GETStationName.json) |
 |4. Create Train Schedule attached to a Train Id|6|https://devint.pds.dev.use.torq.dev/train-schedule/train-schedule <br><br>[POSTCreateTrainSchedule.json](/json/POSTCreateTrainSchedule.json) |HTTP CODE 201 |
