@@ -1,5 +1,3 @@
-# prime
-# 
 
 ## Approvals
 |Approved|Role|Assignee|Approved|Role|Assignee|
@@ -140,140 +138,38 @@ Watch the Request/Response Message Examples on _**Step By Step - Create a Train
 
 #### API Calls Examples - Show the Train Schedule attached to a Train Id
 
+STEP|API CALL|REQUEST|RESPONSE|
+|----|--------|------|---------|
+|1. Get the Train Id associated to a ShortTrainId|1|https://devint.pds.dev.use.torq.dev/train-management/train-id/short-id/A98765%12|```json[	{		"trainId": 3485,		"shortTrainId": "A9876512",		"customerTrainKey": {			"scac": "CN",			"section": "5",			"trainSymbol": "A9876",			"originDate": "2022-04-12"		}	}] ``` |
+|2. Get the train schedule info associated to a Train Id|2|https://devint.pds.dev.use.torq.dev/train-schedule/train-schedule/train-id/3485|```json{  "trainId": 3489,  "scac": "CN",  "section": "5",  "trainSymbol": "A9876",  "originDate": [    2022,    4,    11  ],  "trainCategory": "1",  "trainGroup": "FRT",  "reportType": null,  "activities": [    {     "stationSequenceNum": 1,      "station": {        "id": 8159448,        "name": "Talley GA"      },      "sta": "2022-04-11T22:53:56-05:00[US/Central]",      "std": "2022-04-11T22:53:56-05:00[US/Central]",      "activityTypes": [],      "crewLineSegment": "S1",      "ptcTrainArrival": null,      "ptcTrainDeparture": null    },    {      "stationSequenceNum": 2,      "station": {        "id": 71598,        "name": "Reeves GA"      },      "sta": "2022-04-12T22:57:28-05:00[US/Central]",      "std": "2022-04-12T22:57:28-05:00[US/Central]",      "activityTypes": [],      "crewLineSegment": "S2",      "ptcTrainArrival": null,      "ptcTrainDeparture": null    }  ]}``` |
+|3. Get the location data associated to a station number (ORIGIN)|3|https://devint.pds.dev.use.torq.dev/topology-lookup/station/id/8159448|```json{  "topoOperationalTEType": "STATION",  "id": 8159448,  "physicalControlPointId": 8159450,  "containsTrack": true,  "stationNumber": "58H",  "stationName": "Talley GA",  "ambigousStationName": "Talley",  "boundaryId": 1374763500806619600,  "reportingTimeZone": "US/Eastern",  "namedBoundaryName": [    "Atlanta North"  ],  "stationLocation": [    {      "topoOperationalTEType": "TopoLocationInfo",      "trackLimits": [        8159690      ],      "id": 8159690,      "offset": 1.265,      "lowOffset": 1.265,      "highOffset": 1.265,      "segmentLength": 44.275,      "direction": "UpBound",      "trackType": "MAIN"    },    {      "topoOperationalTEType": "TopoLocationInfo",      "trackLimits": [        8159692      ],      "id": 8159692,      "offset": 358.6275,      "lowOffset": 358.6275,      "highOffset": 358.6275,      "segmentLength": 358.6275,      "direction": "UpBound",      "trackType": "MAIN"    },    {      "topoOperationalTEType": "TopoLocationInfo",      "trackLimits": [        8159688      ],      "id": 8159688,      "offset": 358.6275,      "lowOffset": 358.6275,      "highOffset": 358.6275,      "segmentLength": 358.6275,      "direction": "UpBound",      "trackType": "SIDING"    }  ],  "trackEntityType": "STATION",  "authoritySiding": false,  "wye": false,  "timeZoneBoundary": false,  "authorityEnable": true,  "displayEnable": false,  "cutOver": true,  "trackLimits": [    1374763500806619600  ],  "ABAuthorityStation": false,  "CTCAuthorityStation": true,  "COTAuthorityStation": false,  "TWCAuthorityStation": false}```|
+|4  Get the location data associated to a station number (DESTINATION)|3|https://devint.pds.dev.use.torq.dev/topology-lookup/station/id/71598|```json{  "topoOperationalTEType": "STATION",  "id": 8159448,  "physicalControlPointId": 8159450,  "containsTrack": true,  "stationNumber": "58H",  "stationName": "Talley GA",  "ambigousStationName": "Talley",  "boundaryId": 1374763500806619600,  "reportingTimeZone": "US/Eastern",  "namedBoundaryName": [    "Atlanta North"  ],  "stationLocation": [    {      "topoOperationalTEType": "TopoLocationInfo",      "trackLimits": [        8159690      ],      "id": 8159690,      "offset": 1.265,      "lowOffset": 1.265,      "highOffset": 1.265,      "segmentLength": 44.275,      "direction": "UpBound",      "trackType": "MAIN"    },    {      "topoOperationalTEType": "TopoLocationInfo",      "trackLimits": [        8159692      ],      "id": 8159692,      "offset": 358.6275,      "lowOffset": 358.6275,      "highOffset": 358.6275,      "segmentLength": 358.6275,      "direction": "UpBound",      "trackType": "MAIN"    },    {      "topoOperationalTEType": "TopoLocationInfo",      "trackLimits": [        8159688      ],      "id": 8159688,      "offset": 358.6275,      "lowOffset": 358.6275,      "highOffset": 358.6275,      "segmentLength": 358.6275,      "direction": "UpBound",      "trackType": "SIDING"    }  ],  "trackEntityType": "STATION",  "authoritySiding": false,  "wye": false,  "timeZoneBoundary": false,  "authorityEnable": true,  "displayEnable": false,  "cutOver": true,  "trackLimits": [    1374763500806619600  ],  "ABAuthorityStation": false,  "CTCAuthorityStation": true,  "COTAuthorityStation": false,  "TWCAuthorityStation": false}```|
+
+
+
  
-
-<table>
-    <thead>
-        <tr>
-            <th>STEP</th>
-            <th>API CALL</th>
-            <th>REQUEST</th>
-            <th>RESPONSE</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1. Get the Train Id associated to a ShortTrainId</td>
-            <td>1</td>
-            <td>https://devint.pds.dev.use.torq.dev/train-management/train-id/short-id/A98765 12</td>
-            <td>[
-
-    {
-
-        "trainId": 3485,
-
-        "shortTrainId": "A98765 12",
-
-        "customerTrainKey": {
-
-            "scac": "CN",
-
-            "section": "5",
-
-            "trainSymbol": "A9876",
-
-            "originDate": "2022-04-12"
-
-        }
-
-    }
-
-]</td>
-        </tr>
-        <tr>
-            <td>2. Get the train schedule info associated to a Train Id</td>
-            <td>2</td>
-            <td>https://devint.pds.dev.use.torq.dev/train-schedule/train-schedule/train-id/3485</td>
-            <td>[GETTrainScheduleResponse.json](/json/GETTrainSchedule.json) </td>
-        </tr>
-        <tr>
-            <td>3. Get the location data associated to a station number (ORIGIN)</td>
-            <td>3</td>
-            <td>https://devint.pds.dev.use.torq.dev/topology-lookup/station/id/8159448</td>
-            <td>[GETOriginLocation.json](/json/GETStationName_1.json) </td>
-        </tr>
-         <tr>
-            <td>4  Get the location data associated to a station number (DESTINATION)</td>
-            <td>3</td>
-            <td>https://devint.pds.dev.use.torq.dev/topology-lookup/station/id/71598</td>
-            <td>[GETDestinationLocation.json](/json/GETStationName_2.json) </td>
-        </tr>
-    </tbody>
-</table>
 
 #### API Calls Examples - Create a Train Schedule attached to a Train Id
 
 |STEP|API CALL|REQUEST|RESPONSE|
 |----|--------|------|---------|
-|1. Get the Train Id associated to a ShortTrainId|1|https://devint.pds.dev.use.torq.dev/train-management/train-id/short-id/A98765%2011|{"status": 404,"errorCode": "ERR_0033","errorMessage": "Invalid short train id"}|
-|2. Create a TrainId for a ShortTrainId|4|https://devint.pds.dev.use.torq.dev/train-management/train-id<br><br>{"scac":"CN","section":"5","trainSymbol":"A9876","originDate":"2022-04-14","trainSymbolWithSection":"A98765"} |3489|
-|3. Validate the station name based on station number|5|https://devint.pds.dev.use.torq.dev/topology-lookup/station/station-name-or-station-number/58H|[GETStationName_Response.json](/json/GETStationName.json) |
-|4. Create Train Schedule attached to a Train Id|6|https://devint.pds.dev.use.torq.dev/train-schedule/train-schedule <br><br>[POSTCreateTrainSchedule.json](/json/POSTCreateTrainSchedule.json) |HTTP CODE 201 |
+|1. Get the Train Id associated to a ShortTrainId|1|https://devint.pds.dev.use.torq.dev/train-management/train-id/short-id/A98765%2011|```json{"status": 404,"errorCode": "ERR_0033","errorMessage": "Invalid short train id"}```|
+|2. Create a TrainId for a ShortTrainId|4|https://devint.pds.dev.use.torq.dev/train-management/train-id<br><br>```json{"scac":"CN","section":"5","trainSymbol":"A9876","originDate":"2022-04-14","trainSymbolWithSection":"A98765"}``` |3489|
+|3. Validate the station name based on station number|5|https://devint.pds.dev.use.torq.dev/topology-lookup/station/station-name-or-station-number/58H|```json{  "topoOperationalTEType": "STATION",  "id": 8159448,  "physicalControlPointId": 8159450,  "containsTrack": true,  "stationNumber": "58H",  "stationName": "Talley GA",  "ambigousStationName": "Talley",  "boundaryId": 1374763500806619600,  "reportingTimeZone": "US/Eastern",  "namedBoundaryName": [    "Atlanta North"  ],  "stationLocation": [    {      "topoOperationalTEType": "TopoLocationInfo",      "trackLimits": [        8159690      ],      "id": 8159690,      "offset": 1.265,      "lowOffset": 1.265,      "highOffset": 1.265,      "segmentLength": 44.275,      "direction": "UpBound",      "trackType": "MAIN"    },    {      "topoOperationalTEType": "TopoLocationInfo",      "trackLimits": [        8159692      ],      "id": 8159692,      "offset": 358.6275,      "lowOffset": 358.6275,      "highOffset": 358.6275,      "segmentLength": 358.6275,      "direction": "UpBound",      "trackType": "MAIN"    },    {      "topoOperationalTEType": "TopoLocationInfo",      "trackLimits": [        8159688      ],      "id": 8159688,      "offset": 358.6275,      "lowOffset": 358.6275,      "highOffset": 358.6275,      "segmentLength": 358.6275,      "direction": "UpBound",      "trackType": "SIDING"    }  ],  "trackEntityType": "STATION",  "authoritySiding": false,  "wye": false,  "timeZoneBoundary": false,  "authorityEnable": true,  "displayEnable": false,  "cutOver": true,  "trackLimits": [    1374763500806619600  ],  "ABAuthorityStation": false,  "CTCAuthorityStation": true,  "COTAuthorityStation": false,  "TWCAuthorityStation": false}``` |
+|4. Create Train Schedule attached to a Train Id|6|https://devint.pds.dev.use.torq.dev/train-schedule/train-schedule <br><br>```json{  "trainId": 3489,  "scac": "CN",  "section": "5",  "trainSymbol": "A9876",  "originDate": [    2022,    4,    11  ],  "trainCategory": "1",  "trainGroup": "FRT",  "reportType": null,  "activities": [    {      "stationSequenceNum": 1,      "station": {        "id": 8159448,        "name": "Talley GA"      },      "sta": "2022-04-11T22:53:56-05:00[US/Central]",      "std": "2022-04-11T22:53:56-05:00[US/Central]",      "activityTypes": [],      "crewLineSegment": "S1",      "ptcTrainArrival": null,      "ptcTrainDeparture": null    },    {      "stationSequenceNum": 2,      "station": {        "id": 71598,        "name": "Reeves GA"      },      "sta": "2022-04-12T22:57:28-05:00[US/Central]",      "std": "2022-04-12T22:57:28-05:00[US/Central]",      "activityTypes": [],      "crewLineSegment": "S2",      "ptcTrainArrival": null,      "ptcTrainDeparture": null    }  ]}``` |HTTP CODE 201 |
+
 
  
 
 #### API Calls Examples - Update a Train Schedule attached to a Train Id
 
 
-<table>
-    <thead>
-        <tr>
-            <th>STEP</th>
-            <th>API CALL</th>
-            <th>REQUEST</th>
-            <th>RESPONSE</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1. Make an API call to Validate the ShortTrainID</td>
-            <td>1</td>
-            <td>https://devint.pds.dev.use.torq.dev/train-management/train-id/short-id/A98765 12
-            </td>
-            <td>[
+STEP|API CALL|REQUEST|RESPONSE|
+|----|--------|------|---------|
+|1. Get the Train Id associated to a ShortTrainId|1|https://devint.pds.dev.use.torq.dev/train-management/train-id/short-id/A98765%12|```json[	{		"trainId": 3485,		"shortTrainId": "A9876512",		"customerTrainKey": {			"scac": "CN",			"section": "5",			"trainSymbol": "A9876",			"originDate": "2022-04-12"		}	}] ``` |
+|3. Validate the station name based on station number|5|https://devint.pds.dev.use.torq.dev/topology-lookup/station/station-name-or-station-number/58H|```json{  "topoOperationalTEType": "STATION",  "id": 8159448,  "physicalControlPointId": 8159450,  "containsTrack": true,  "stationNumber": "58H",  "stationName": "Talley GA",  "ambigousStationName": "Talley",  "boundaryId": 1374763500806619600,  "reportingTimeZone": "US/Eastern",  "namedBoundaryName": [    "Atlanta North"  ],  "stationLocation": [    {      "topoOperationalTEType": "TopoLocationInfo",      "trackLimits": [        8159690      ],      "id": 8159690,      "offset": 1.265,      "lowOffset": 1.265,      "highOffset": 1.265,      "segmentLength": 44.275,      "direction": "UpBound",      "trackType": "MAIN"    },    {      "topoOperationalTEType": "TopoLocationInfo",      "trackLimits": [        8159692      ],      "id": 8159692,      "offset": 358.6275,      "lowOffset": 358.6275,      "highOffset": 358.6275,      "segmentLength": 358.6275,      "direction": "UpBound",      "trackType": "MAIN"    },    {      "topoOperationalTEType": "TopoLocationInfo",      "trackLimits": [        8159688      ],      "id": 8159688,      "offset": 358.6275,      "lowOffset": 358.6275,      "highOffset": 358.6275,      "segmentLength": 358.6275,      "direction": "UpBound",      "trackType": "SIDING"    }  ],  "trackEntityType": "STATION",  "authoritySiding": false,  "wye": false,  "timeZoneBoundary": false,  "authorityEnable": true,  "displayEnable": false,  "cutOver": true,  "trackLimits": [    1374763500806619600  ],  "ABAuthorityStation": false,  "CTCAuthorityStation": true,  "COTAuthorityStation": false,  "TWCAuthorityStation": false}```|
+|4. Update Train Schedule attached to a Train Id|6|https://devint.pds.dev.use.torq.dev/train-schedule/train-schedule <br><br>```json{  "trainId": 3489,  "scac": "CN",  "section": "5",  "trainSymbol": "A9876",  "originDate": [    2022,    4,    11  ],  "trainCategory": "1",  "trainGroup": "FRT",  "reportType": null,  "activities": [    {      "stationSequenceNum": 1,      "station": {        "id": 8159448,        "name": "Talley GA"      },      "sta": "2022-04-11T22:53:56-05:00[US/Central]",      "std": "2022-04-11T22:53:56-05:00[US/Central]",      "activityTypes": [],      "crewLineSegment": "S1",      "ptcTrainArrival": null,      "ptcTrainDeparture": null    },    {      "stationSequenceNum": 2,      "station": {        "id": 71598,        "name": "Reeves GA"      },      "sta": "2022-04-12T22:57:28-05:00[US/Central]",      "std": "2022-04-12T22:57:28-05:00[US/Central]",      "activityTypes": [],      "crewLineSegment": "S2",      "ptcTrainArrival": null,      "ptcTrainDeparture": null    }  ]}``` |HTTP CODE 201    |
+|5. Refresh the Train Schedule data||CALL Show the Train Schedule attached to a Train Id|
 
-    {
-
-        "trainId": 3485,
-
-        "shortTrainId": "A98765 12",
-
-        "customerTrainKey": {
-
-            "scac": "CN",
-
-            "section": "5",
-
-            "trainSymbol": "A9876",
-
-            "originDate": "2022-04-12"
-
-        }
-
-    }
-
-]</td>
-        </tr>
-        <tr>
-            <td>3. Validate the station name based on station number</td>
-            <td>5</td>
-            <td>https://devint.pds.dev.use.torq.dev/topology-lookup/station/station-name-or-station-number/58H
-            </td>
-            <td> 
-              [GETStationName_Response.json](/json/GETStationName.json) 
-          </td>
-        </tr>
-        <tr>
-            <td>4. Update Train Schedule attached to a Train Id</td>
-            <td>6</td>
-            <td>https://devint.pds.dev.use.torq.dev/train-schedule/train-schedule <br><br>[POSTCreateTrainSchedule.json](/json/POSTCreateTrainSchedule.json) 
-            </td>
-            <td> HTTP CODE 201           </td>
-        </tr>
-        <tr>
-            <td>5. Refresh the Train Schedule data</td>
-            <td colspan=3>CALL Show the Train Schedule attached to a Train Id</td>            
-        </tr>
-    </tbody>
-</table>
+ 
 
