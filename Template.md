@@ -9,7 +9,7 @@
 
 |Revision|Date      |Author             |Changes       |
 |--------|----------|-------------------|:------------:|
-|1.0     |04/26/2022|Jose Gonzalez      | Created      | 
+|1.0     |04/26/2022|John Doe           | Created      | 
 
 
 ## Target Audience
